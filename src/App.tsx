@@ -95,7 +95,7 @@ export default function Editor() {
 
   const initialValues: IEmailTemplate | null = useMemo(() => {
     return {
-      subject: 'Welcome to Easy-email',
+      subject: 'You Don\'t Want to Miss This...',
       subTitle: 'Nice to meet you!',
       content: template
     };
@@ -110,8 +110,14 @@ export default function Editor() {
         dashed={false}
         data={initialValues}
         height={'calc(100vh - 85px)'}
-        // onUploadImage={services.common.uploadByQiniu}
-
+        onUploadImage={(image) => {
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve('https://img.alicdn.com/imgextra/i3/O1CN01YX9z9V1K3Q1jKl7dD_!!6000000001592-2-tps-1000-1000.png');
+            }, 1000);
+          });
+          console.warn(image)
+        }}
         autoComplete
         fontList={fontList}
         onSubmit={() => { }}
